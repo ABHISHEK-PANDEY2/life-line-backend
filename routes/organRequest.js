@@ -18,12 +18,11 @@ async function sendMail(data,patientDetails){
           pass: "tlmxntmjvasyjigb",
         },
       });
-
+      console.log(data);
       const mailDetails = await transporter.sendMail({
         from: '"Life Line" <abhishekpandey3188@gmail.com>', 
         to: data.email,
-        subject: `🚨 Urgent requirement of ${data.type
-             (data.organ.toLowerCase === "blood")? "blood":null } 🚨`, 
+        subject: `🚨 Urgent requirement of ${data.type} ${(data.organ.toLowerCase() === "blood")? "blood":null } 🚨`, 
         text: `Urgent requirement of ${data.organ}`,
         html: `<b>Hello</b><br> We are from <b>Life Line</b> an organization which helps critical patients in need of an organ , And such a patient needs help right now from your hospital, Here are the contact details and requested organ details if you could help in any way possible then please contact the patient.<br/><br/>
             <p>
@@ -52,7 +51,6 @@ router.post("/organRequest",async(req,res) => {
             patient = data.obj;
         }
     })
-    console.log(patient,data);
     sendMail(data,patient).catch((e) => console.log(e));
     const patientUpdated = await User.updateOne({_id : patient._id},{$set:{phNum : 9454884456}});
 })
