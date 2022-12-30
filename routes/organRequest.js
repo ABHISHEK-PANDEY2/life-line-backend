@@ -51,8 +51,11 @@ router.post("/organRequest",async(req,res) => {
             patient = data.obj;
         }
     })
-    sendMail(data,patient).catch((e) => console.log(e));
+    sendMail(data,patient).catch((e) => {
+        res.send(e.message);
+    });
     const patientUpdated = await User.updateOne({_id : patient._id},{$set:{phNum : 9454884456}});
+    res.send("message send");
 })
 
 module.exports = router;
