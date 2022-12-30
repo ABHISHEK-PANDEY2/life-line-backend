@@ -22,7 +22,8 @@ async function sendMail(data,patientDetails){
       const mailDetails = await transporter.sendMail({
         from: '"Life Line" <abhishekpandey3188@gmail.com>', 
         to: data.email,
-        subject: "🚨 Urgent requirement of an Organ 🚨", 
+        subject: `🚨 Urgent requirement of ${data.type
+             (data.organ.toLowerCase === "blood")? "blood":null } 🚨`, 
         text: `Urgent requirement of ${data.organ}`,
         html: `<b>Hello</b><br> We are from <b>Life Line</b> an organization which helps critical patients in need of an organ , And such a patient needs help right now from your hospital, Here are the contact details and requested organ details if you could help in any way possible then please contact the patient.<br/><br/>
             <p>
@@ -32,9 +33,6 @@ async function sendMail(data,patientDetails){
                Gender: ${patientDetails.gender}<br/>
                Contact Email: ${patientDetails.email}<br/>
                Contact Phone Number: ${patientDetails.phNum}<br/>
-               <b><h3>Details about organs requested</h3></b>
-               Organ: ${data.organ}<br/>
-               Organ Type: ${data.type}<br/>
             </p>   
                `,
       });
