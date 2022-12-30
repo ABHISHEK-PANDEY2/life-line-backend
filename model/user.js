@@ -25,6 +25,12 @@ const userSchema = new mongoose.Schema({
   phNum: {
     type:Number,
   },
+  age:{
+    type:Number
+  },
+  gender:{
+    type:String
+  },
   organsDonated:[
     {
         organ:String,
@@ -40,6 +46,7 @@ const userSchema = new mongoose.Schema({
   organsRequested:[
     {
         organ:String,
+        type:String,
         timestamp:Number,
     }
   ],
