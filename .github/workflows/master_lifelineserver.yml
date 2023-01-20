@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'lifelineserver'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_90183FAD0B084B3FAC5D23CD68035BDF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3353CF771D014E47B48E550E3500DD62 }}
           package: .
